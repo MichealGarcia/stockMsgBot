@@ -10,6 +10,7 @@
 
 #Import Various Libraries, including Tweepy, a Python library for the Twitter API.
 import os
+import re
 from re import search
 import tweepy as tw
 import pandas as pd
@@ -25,11 +26,11 @@ access_token = os.getenv("ACCESS_TOKEN")
 access_token_secret = os.getenv("ACCESS_TOKEN_SECRET")
 account_sid = os.getenv('TWILIO_ACCOUNT_SID')
 auth_token = os.getenv('TWILIO_AUTH_TOKEN')
+print(auth_token)
 client = Client(account_sid, auth_token)
+print(client)
 twilio_phone = os.getenv("TWILIO_PHONE")
 personal_phone = os.getenv("PERSONAL_PHONE")
-print(twilio_phone)
-
 auth = tw.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tw.API(auth, wait_on_rate_limit=True)
@@ -65,29 +66,41 @@ for column in tweet_text.iteritems():
 
 stocks = [words.split("\n\n") for words in stocks]
 
+numbers_as_str = list(map(str, range(0,10)))
+
 
 
 
 #create flat list
 
 stocks_list = [item for sublist in stocks for item in sublist]
-stocks_list
+
 stocks_list = [word.replace("\n", " ") for word in stocks_list]
-stocks_list
+
 stocks_list = list(set(stocks_list))
 
 text_message = [' '.join(word for word in stocks_list)]
-
-text_message = [word.replace(" ", ", ") for word in text_message]
-
-
-
 text_message
+text_message = ''.join([i for i in text_message if not i.isdigit()])
+text_message = ''.join([i for i in text_message if not i.isdigit()])
+remove_lower = lambda text: re.sub('[a-z]', '', text)
+text_message = remove_lower(text_message)
+text_message = re.sub('[\W_]+', ' ', text_message)
+text_message = text_message.split()
+text_message1 = list(set(text_message))
+text_message = " "
+text_message = text_message.join(text_message1)
+text_message
+text_message = text_message.replace(" ", ", ")
+text_message
+
+
+
 
 print(client)
 message = client.messages \
                 .create(
-                     body=text_message,
+                     body=f"-\nHere are the most discussed stocks in takeover chatter:\n {text_message}",
                      from_=twilio_phone,
                      to=personal_phone
                  )
