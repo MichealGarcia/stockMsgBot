@@ -82,7 +82,6 @@ stocks_list = [word.replace("\n", " ") for word in stocks_list]
 stocks_list = list(set(stocks_list))
 
 text_message = [' '.join(word for word in stocks_list)]
-text_message
 text_message = ''.join([i for i in text_message if not i.isdigit()])
 text_message = ''.join([i for i in text_message if not i.isdigit()])
 remove_lower = lambda text: re.sub('[a-z]', '', text)
@@ -92,9 +91,7 @@ text_message = text_message.split()
 text_message1 = list(set(text_message))
 text_message = " "
 text_message = text_message.join(text_message1)
-text_message
 text_message = text_message.replace(" ", ", ")
-text_message
 
 
 
