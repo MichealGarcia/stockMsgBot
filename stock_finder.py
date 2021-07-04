@@ -39,19 +39,23 @@ api = tw.API(auth, wait_on_rate_limit=True)
 
 search_words = "takeover chatter"
 today = date.today()
-date_since = today - timedelta(days=7)
+date_since = today - timedelta(days=6)
 
 
 # Collect tweets
 tweets = tw.Cursor(api.search,
                        q=search_words,
-                       lang="en",
-                       since=date_since).items(200)
+                       tweet_mode = 'extended',
+                       since=date_since).items(500)
+                       
 
 # Collect a list of tweets
-text = [tweet.text for tweet in tweets]
+text = [tweet.full_text for tweet in tweets]
+
 
 tweet_text = pd.DataFrame(data = text, columns=['text'])
+pd.options.display.max_colwidth = 1000
+tweet_text
 stocks = []
 
 
@@ -67,7 +71,7 @@ for column in tweet_text.iteritems():
                    
 
 stocks = [words.split("\n\n") for words in stocks]
-
+stocks
 numbers_as_str = list(map(str, range(0,10)))
 
 
