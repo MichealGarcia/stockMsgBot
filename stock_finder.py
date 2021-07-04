@@ -26,7 +26,11 @@ access_token = os.getenv("ACCESS_TOKEN")
 access_token_secret = os.getenv("ACCESS_TOKEN_SECRET")
 account_sid = os.getenv('TWILIO_ACCOUNT_SID')
 auth_token = os.getenv('TWILIO_AUTH_TOKEN')
+
 client = Client(account_sid, auth_token)
+
+
+
 twilio_phone = os.getenv("TWILIO_PHONE")
 personal_phone = os.getenv("PERSONAL_PHONE")
 auth = tw.OAuthHandler(consumer_key, consumer_secret)
@@ -42,7 +46,7 @@ date_since = today - timedelta(days=7)
 tweets = tw.Cursor(api.search,
                        q=search_words,
                        lang="en",
-                       since=date_since).items(50)
+                       since=date_since).items(200)
 
 # Collect a list of tweets
 text = [tweet.text for tweet in tweets]
