@@ -27,6 +27,8 @@ access_token_secret = os.getenv("ACCESS_TOKEN_SECRET")
 account_sid = os.getenv('TWILIO_ACCOUNT_SID')
 auth_token = os.getenv('TWILIO_AUTH_TOKEN')
 
+
+
 client = Client(account_sid, auth_token)
 
 
@@ -96,7 +98,6 @@ text_message1 = list(set(text_message))
 text_message = " "
 text_message = text_message.join(text_message1)
 text_message = text_message.replace(" ", ", ")
-
 
 
 
