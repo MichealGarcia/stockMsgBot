@@ -9,10 +9,10 @@
     Then texting Twilio approved numbers the list.
     - The current code uses the search term "takeover chatter"
 # What is this project for?
-    I created this project to automate searching twitter, and escape the media rabbithole. 
+    I created this project to automate searching twitter, and escape the media rabbithole.
     - With this project I can reduce the time it would take to count the most common stocks mentioned in recent posts.
 # Why is it different
     The project is scalable. 
     - The focus is to eventually use the application on a daily basis. 
       If possible, I want it to b available to anyone/everyone. So that if they text a phone number itll text back the list of stocks mentioned in the last x amount of hours.
-    
+    - I could also add more API funcionality to it. This is essentially a twitter bot and simple code additions would create message and tweet producing funcionality.
