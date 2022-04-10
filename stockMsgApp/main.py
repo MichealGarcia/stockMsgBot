@@ -4,7 +4,7 @@
 
     Then it will create a list that will then be turned into a single string.
 
-    This list will be texted through the Twilio API to my phone.
+    This list will be ouput onto a website.
     """
 
 
