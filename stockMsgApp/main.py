@@ -86,9 +86,14 @@ t_word_list = word_list(t_list)
 t_stock_list = new_word_list(t_word_list)
 
 
-# CURRENT PLACE FOR PROJECT
+# CURRENT PLACE FOR PROJECT, 
 print(t_stock_list)
 
+# NEXT FOCUS
+# 1. Take list of stocks and remove duplicates
+# 2. save data as JSON (i think)
+# 3. on to html page
+# 4. CSS, etc
 
 t_stock_list = [words.split("\n\n") for words in t_stock_list]
 # stocks
